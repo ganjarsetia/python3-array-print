@@ -1,24 +1,21 @@
-from pprint import pprint
+# from pprint import pprint
 
 
 def process_page(start, end):
     if end < 4:
         return False
 
-    input_number = []
-    out = []
+    output_data = []
     for x in range(start, end + 1):
-        input_number.append(x)
+        output_data.append(x)
+        print(str(x - 1) + " = " + str(output_data[x - 1]))
+        if x % 4 == 0:
+            temp = output_data[x - 3]
+            output_data[x - 3] = output_data[x - 2]
+            output_data[x - 2] = output_data[x - 1]
+            output_data[x - 1] = temp
 
-    for i, v in enumerate(input_number):
-        j = i + 1
-        if j % 4 == 0:
-            out.append(input_number[j - 4])
-            out.append(input_number[j - 2])
-            out.append(input_number[j - 1])
-            out.append(input_number[j - 3])
-
-    return out
+    return output_data
 
 
 if __name__ == '__main__':
